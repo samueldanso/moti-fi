@@ -1,0 +1,25 @@
+{
+  "name": "moti-fi",
+  "version": "0.1.0",
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/node": "^20.10.4",
+    "typescript": "^5.3.3"
+  },
+  "private": true,
+  "scripts": {
+    "dev": "bun run dev:all",
+    "dev:frontend": "bun --cwd frontend run dev",
+    "dev:agent": "bun --cwd agent run dev",
+    "dev:all": "bun run dev:agent & bun run dev:frontend",
+    "build": "bun run build:all",
+    "build:frontend": "bun --cwd frontend run build",
+    "build:agent": "bun --cwd agent run build",
+    "build:all": "bun run build:agent && bun run build:frontend",
+    "lint": "biome lint --write .",
+    "format": "biome format --write .",
+    "check": "biome check --apply ."
+  },
+  "workspaces": ["frontend", "agent"],
+  "trustedDependencies": ["@biomejs/biome", "@parcel/watcher", "protobufjs"]
+}
