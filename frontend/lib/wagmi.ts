@@ -1,22 +1,22 @@
-"use client";
+"use client"
 
-import { connectorsForWallets } from "@rainbow-me/rainbowkit";
+import { connectorsForWallets } from "@rainbow-me/rainbowkit"
 import {
   coinbaseWallet,
   metaMaskWallet,
   rainbowWallet,
-} from "@rainbow-me/rainbowkit/wallets";
-import { useMemo } from "react";
-import { http, createConfig } from "wagmi";
-import { base, baseSepolia } from "wagmi/chains";
-import { NEXT_PUBLIC_WC_PROJECT_ID } from "./config";
+} from "@rainbow-me/rainbowkit/wallets"
+import { useMemo } from "react"
+import { http, createConfig } from "wagmi"
+import { base, baseSepolia } from "wagmi/chains"
+import { NEXT_PUBLIC_WC_PROJECT_ID } from "./config"
 
 export function useWagmiConfig() {
-  const projectId = NEXT_PUBLIC_WC_PROJECT_ID ?? "";
+  const projectId = NEXT_PUBLIC_WC_PROJECT_ID ?? ""
   if (!projectId) {
     throw new Error(
-      "To connect to all Wallets you need to provide a NEXT_PUBLIC_WC_PROJECT_ID env variable"
-    );
+      "To connect to all Wallets you need to provide a NEXT_PUBLIC_WC_PROJECT_ID env variable",
+    )
   }
 
   return useMemo(() => {
@@ -34,8 +34,8 @@ export function useWagmiConfig() {
       {
         appName: "MotiFi",
         projectId,
-      }
-    );
+      },
+    )
 
     return createConfig({
       chains: [base, baseSepolia],
@@ -46,6 +46,6 @@ export function useWagmiConfig() {
         [base.id]: http(),
         [baseSepolia.id]: http(),
       },
-    });
-  }, [projectId]);
+    })
+  }, [projectId])
 }

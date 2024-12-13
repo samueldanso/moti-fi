@@ -1,22 +1,22 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { useAgent } from "@/hooks/use-agent";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
-import type { Message } from "@/lib/types";
+import { useState } from "react"
+import { useAgent } from "@/lib/hooks/use-agent"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Card, CardContent } from "@/components/ui/card"
+import type { Message } from "@/lib/types"
 
 export function Chat() {
-  const { messages = [], sendMessage, isLoading } = useAgent();
-  const [input, setInput] = useState("");
+  const { messages = [], sendMessage, isLoading } = useAgent()
+  const [input, setInput] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim()) return;
-    await sendMessage(input);
-    setInput("");
-  };
+    e.preventDefault()
+    if (!input.trim()) return
+    await sendMessage(input)
+    setInput("")
+  }
 
   return (
     <Card>
@@ -51,5 +51,5 @@ export function Chat() {
         </form>
       </CardContent>
     </Card>
-  );
+  )
 }

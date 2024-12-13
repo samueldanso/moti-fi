@@ -8,6 +8,8 @@ interface AgentState {
   sendMessage: (content: string) => Promise<void>;
 }
 
+const AGENT_URL = process.env.NEXT_PUBLIC_AGENT_URL || "http://localhost:3001";
+
 export const useAgent = create<AgentState>((set) => ({
   messages: [],
   isLoading: false,
@@ -15,7 +17,7 @@ export const useAgent = create<AgentState>((set) => ({
   sendMessage: async (content: string) => {
     try {
       set({ isLoading: true });
-      const res = await fetch("/api/agent", {
+      const res = await fetch(`${AGENT_URL}/api`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: content }),

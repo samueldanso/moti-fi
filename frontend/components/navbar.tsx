@@ -1,9 +1,7 @@
-"use client";
-
-import { ConnectWallet, Wallet } from "@coinbase/onchainkit/wallet";
-import { LineChart, Settings } from "lucide-react";
-import Link from "next/link";
-import { WalletButtons } from "./wallet-buttons";
+"use client"
+import { LineChart, Settings } from "lucide-react"
+import Link from "next/link"
+import { WalletButtons } from "./wallet-buttons"
 
 export function Navbar() {
   return (
@@ -44,5 +42,5 @@ export function Navbar() {
         </div>
       </div>
     </nav>
-  );
+  )
 }

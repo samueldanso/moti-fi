@@ -16,7 +16,9 @@
 		"@langchain/langgraph": "latest",
 		"@langchain/openai": "latest",
 		"twitter-api-v2": "^1.16.0",
-		"dotenv": "latest"
+		"dotenv": "latest",
+		"express": "latest",
+		"cors": "latest"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.4.1",
