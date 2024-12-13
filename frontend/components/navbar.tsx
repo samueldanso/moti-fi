@@ -1,8 +1,9 @@
-"use client"
+"use client";
 
-import { ConnectWallet, Wallet } from "@coinbase/onchainkit/wallet"
-import { LineChart, Settings } from "lucide-react"
-import Link from "next/link"
+import { ConnectWallet, Wallet } from "@coinbase/onchainkit/wallet";
+import { LineChart, Settings } from "lucide-react";
+import Link from "next/link";
+import { WalletButtons } from "./wallet-buttons";
 
 export function Navbar() {
   return (
@@ -39,11 +40,9 @@ export function Navbar() {
 
         {/* Wallet - Right */}
         <div className="flex-none">
-          <Wallet>
-            <ConnectWallet className="rounded-lg bg-primary/90 text-primary-foreground transition-colors hover:bg-primary" />
-          </Wallet>
+          <WalletButtons />
         </div>
       </div>
     </nav>
-  )
+  );
 }
