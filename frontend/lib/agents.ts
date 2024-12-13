@@ -1,7 +1,7 @@
 import { CdpAgentkit } from "@coinbase/cdp-agentkit-core";
 import { CdpToolkit } from "@coinbase/cdp-langchain";
 import { ChatOpenAI } from "@langchain/openai";
-import { createReactAgent } from "@langchain/langgraph/prebuilt";
+import { createReactAgent } from "@langchain/langgraph";
 import { MemorySaver } from "@langchain/langgraph";
 
 export async function initializeAgent() {
