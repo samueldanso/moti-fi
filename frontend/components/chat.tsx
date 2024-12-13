@@ -1,14 +1,16 @@
 "use client"
 
 import { useState } from "react"
-import { useAgent } from "../hooks/use-agent"
+import { useAgent } from "@/hooks/use-agent"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import type { SystemEvent } from "@/lib/types"
 
 interface Message {
   id: string
   content: string
   isUser: boolean
+  systemEvent?: SystemEvent
 }
 
 export function Chat() {
@@ -50,12 +52,12 @@ export function Chat() {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-col gap-3 min-h-[200px] max-h-[500px] overflow-y-auto">
+      <div className="flex max-h-[500px] min-h-[200px] flex-col gap-3 overflow-y-auto">
         {messages.map((msg) => (
           <div
             key={msg.id}
-            className={`p-2 rounded-lg ${
-              msg.isUser ? "bg-primary/10 ml-auto" : "bg-muted"
+            className={`rounded-lg p-2 ${
+              msg.isUser ? "ml-auto bg-primary/10" : "bg-muted"
             } max-w-[80%]`}
           >
             {msg.content}

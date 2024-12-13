@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { initializeAgent } from "../../../lib/agent-setup"
+import { initializeAgent } from "../../../lib/agents"
 
 let agent: any = null
 
