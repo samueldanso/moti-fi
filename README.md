@@ -1,24 +1,12 @@
 <a href="https://emotisync.xyz">
   <img alt="AI-Powered Investment Management Agents." src="app/(app)opengraph-image.png">
-  <h1 align="center">🤖 MotiFi — Your Autonomous AI Agents Investment Manager</h1>
+  <h1 align="center">🤖 MotiFi: Your Autonomous AI Agents Investment Manager</h1>
 </a>
-AI-Powered Investment Management Agents
 
-<p align="center">
+<p>
 MotiFi is a team of specialized autonomous AI agents that work together to streamline the management of your Web3 investments. Like having expert analysts, traders, and portfolio managers in your pocket 24/7 to help you navigate the crypto market with confidence.
 Currently live on Base, powered by AgentKit and LangChain.
 </p>
-
- <p align="center">
-   <a href="#problem"><strong>Problem</strong></a> ·
-   <a href="#solution"><strong>Solution</strong></a> ·
-  <a href="#features"><strong>Features</strong></a> ·
-  <a href="#how-it-works"><strong>How it Works</strong></a> ·
-  <a href="#tech-stack"><strong>Tech Stack</strong></a> ·
-  <a href="#getting-started"><strong>Getting Started</strong></a> ·
-  <a href="#roadmap"><strong>Roadmap</strong></a>
-</p>
-<br/>
 
 ## 🤔 Problem
 
@@ -97,7 +85,7 @@ Built with enterprise-grade partner technologies:
 -   **AI Engine**: Gaia LLM
 -   **Blockchain**: Base Chain
 -   **Agent Framework**: Coibase Developer Platform AgentKit
--   **Development Kit**: Coibase Developer Platform
+-   **Development Kit**: Coibase Developer Platform SDK
 -   **Agent Orchestration**: Langchain
 -   **Type Safety**: TypeScript, Zod
 -   **Formatter & Linter:** Biome
