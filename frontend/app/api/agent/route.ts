@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { initializeAgent } from "../../../lib/agents"
+import { initializeAgent } from "@/lib/agents"
 
 let agent: any = null
 
@@ -13,10 +13,9 @@ export async function POST(req: Request) {
       agent = setup.agent
     }
 
-    // Use the agent to process the message
     const stream = await agent.stream(
       { messages: [{ role: "user", content: message }] },
-      { configurable: { thread_id: "CDP AgentKit Example" } },
+      { configurable: { thread_id: "moti-fi-agent" } },
     )
 
     let response = ""
@@ -26,14 +25,14 @@ export async function POST(req: Request) {
       }
     }
 
-    return NextResponse.json({
-      content: response,
-      status: "success",
-    })
+    return NextResponse.json({ content: response })
   } catch (error) {
     console.error("Agent error:", error)
     return NextResponse.json(
-      { error: "Failed to process message" },
+      {
+        error: "Failed to process message",
+        details: error.message,
+      },
       { status: 500 },
     )
   }

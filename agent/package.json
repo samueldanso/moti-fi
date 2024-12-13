@@ -1,25 +1,26 @@
 {
-  "name": "moti-fi-agent",
-  "version": "0.1.0",
-  "description": "Moti-fi Investment Collective Agent",
-  "main": "src/index.ts",
-  "scripts": {
-    "dev": "bun run src/index.ts",
-    "test": "bun test",
-    "lint": "biome check .",
-    "format": "biome format . --write"
-  },
-  "dependencies": {
-    "@coinbase/cdp-agentkit-core": "latest",
-    "@coinbase/cdp-langchain": "latest",
-    "@langchain/core": "latest",
-    "@langchain/langgraph": "latest",
-    "@langchain/openai": "latest",
-    "dotenv": "latest"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.4.1",
-    "@types/node": "^20.10.4",
-    "typescript": "^5.3.3"
-  }
+	"name": "moti-fi-agent",
+	"version": "0.1.0",
+	"description": "Moti-fi Investment Collective Agent",
+	"main": "src/index.ts",
+	"scripts": {
+		"dev": "bun run src/index.ts",
+		"test": "bun test",
+		"lint": "biome check .",
+		"format": "biome format . --write"
+	},
+	"dependencies": {
+		"@coinbase/cdp-agentkit-core": "latest",
+		"@coinbase/cdp-langchain": "latest",
+		"@langchain/core": "latest",
+		"@langchain/langgraph": "latest",
+		"@langchain/openai": "latest",
+		"twitter-api-v2": "^1.16.0",
+		"dotenv": "latest"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.4.1",
+		"@types/node": "^20.10.4",
+		"typescript": "^5.3.3"
+	}
 }

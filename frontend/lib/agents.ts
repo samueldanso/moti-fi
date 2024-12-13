@@ -1,6 +1,8 @@
 import { CdpAgentkit } from "@coinbase/cdp-agentkit-core"
 import { CdpToolkit } from "@coinbase/cdp-langchain"
 import { ChatOpenAI } from "@langchain/openai"
+import { createReactAgent } from "@langchain/langgraph/prebuilt"
+import { MemorySaver } from "@langchain/langgraph"
 
 export async function initializeAgent() {
   const llm = new ChatOpenAI({
@@ -12,34 +14,32 @@ export async function initializeAgent() {
   })
 
   const config = {
-    networkId: process.env.NETWORK_ID || "base-sepolia",
+    networkId: process.env.NEXT_PUBLIC_NETWORK_ID || "base-sepolia",
   }
 
   const agentkit = await CdpAgentkit.configureWithWallet(config)
   const cdpToolkit = new CdpToolkit(agentkit)
-  const _tools = cdpToolkit.getTools()
+  const tools = cdpToolkit.getTools()
 
-  // Simplified agent implementation
-  const agent = {
-    stream: async ({ messages }: { messages: any[] }) => {
-      try {
-        const response = await llm.invoke(messages)
-        return [
-          {
-            agent: {
-              messages: [{ content: response.content }],
-            },
-          },
-        ]
-      } catch (error) {
-        console.error("Agent error:", error)
-        throw error
-      }
-    },
-  }
+  const memory = new MemorySaver()
+
+  const agent = createReactAgent({
+    llm,
+    tools,
+    checkpointSaver: memory,
+    messageModifier: `
+      You are an AI investment management agent with multiple capabilities:
+      1. Use 'get_social_sentiment' for asset sentiment
+      2. Use 'get_wallet_details' for portfolio info
+      3. Use 'get_balance' for asset balances
+      4. Use CDP tools for onchain actions
+
+      IMPORTANT: Always use appropriate tools for each task.
+    `,
+  })
 
   return {
     agent,
-    config: { configurable: { thread_id: "CDP AgentKit Example" } },
+    config: { configurable: { thread_id: "moti-fi-agent" } },
   }
 }

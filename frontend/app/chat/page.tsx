@@ -1,17 +1,22 @@
 "use client"
 
 import { Chat } from "@/components/chat"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { PortfolioStatus } from "@/components/dashboard/portfolio-status"
 
 export default function ChatPage() {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Chat with AI Agent</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Chat />
-      </CardContent>
-    </Card>
+    <div className="container mx-auto p-4">
+      <div className="grid gap-4 md:grid-cols-[1fr_300px]">
+        {/* Main Chat */}
+        <div className="flex flex-col gap-4">
+          <Chat />
+        </div>
+
+        {/* Sidebar */}
+        <div className="flex flex-col gap-4">
+          <PortfolioStatus />
+        </div>
+      </div>
+    </div>
   )
 }

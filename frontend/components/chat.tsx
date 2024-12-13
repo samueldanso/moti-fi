@@ -1,81 +1,55 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useAgent } from "@/hooks/use-agent"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import type { SystemEvent } from "@/lib/types"
-
-interface Message {
-  id: string
-  content: string
-  isUser: boolean
-  systemEvent?: SystemEvent
-}
+import { useState } from "react";
+import { useAgent } from "@/hooks/use-agent";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent } from "@/components/ui/card";
+import type { Message } from "@/lib/types";
 
 export function Chat() {
-  const [message, setMessage] = useState("")
-  const [messages, setMessages] = useState<Message[]>([])
-  const { sendMessage, isLoading } = useAgent({
-    onError: (error) => console.error("Chat error:", error),
-  })
+  const { messages = [], sendMessage, isLoading } = useAgent();
+  const [input, setInput] = useState("");
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    if (!message.trim()) return
-
-    try {
-      const newUserMessage = {
-        id: `${Date.now()}-user`,
-        content: message,
-        isUser: true,
-      }
-      // Add user message to history
-      setMessages((prev) => [...prev, newUserMessage])
-
-      const response = await sendMessage(message)
-      // Add agent response to history
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: `${Date.now()}-agent`,
-          content: response.content,
-          isUser: false,
-        },
-      ])
-
-      setMessage("")
-    } catch (error) {
-      console.error("Failed to send message:", error)
-    }
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+    await sendMessage(input);
+    setInput("");
+  };
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex max-h-[500px] min-h-[200px] flex-col gap-3 overflow-y-auto">
-        {messages.map((msg) => (
-          <div
-            key={msg.id}
-            className={`rounded-lg p-2 ${
-              msg.isUser ? "ml-auto bg-primary/10" : "bg-muted"
-            } max-w-[80%]`}
-          >
-            {msg.content}
-          </div>
-        ))}
-      </div>
+    <Card>
+      <CardContent className="p-4">
+        {/* Messages */}
+        <div className="mb-4 flex max-h-[600px] min-h-[400px] flex-col gap-2 overflow-y-auto">
+          {messages?.map((msg: Message) => (
+            <div
+              key={`${msg.role}-${msg.content}`}
+              className={`rounded-lg p-2 ${
+                msg.role === "user"
+                  ? "ml-auto bg-primary text-primary-foreground"
+                  : "bg-muted"
+              } max-w-[80%]`}
+            >
+              {msg.content}
+            </div>
+          ))}
+        </div>
 
-      <form onSubmit={handleSubmit} className="flex gap-2">
-        <Input
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="Type a message..."
-          disabled={isLoading}
-        />
-        <Button type="submit" disabled={isLoading}>
-          Send
-        </Button>
-      </form>
-    </div>
-  )
+        {/* Input */}
+        <form onSubmit={handleSubmit} className="flex gap-2">
+          <Input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Ask about market sentiment, portfolio status..."
+            disabled={isLoading}
+          />
+          <Button type="submit" disabled={isLoading}>
+            {isLoading ? "Sending..." : "Send"}
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
+  );
 }
