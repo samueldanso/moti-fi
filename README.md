@@ -108,14 +108,14 @@ git clone https://github.com/yourusername/moti-fi.git
     bun install
     ```
 
-3 Set up your environment
+3. Set up your environment
 
 ```bash
 cp .env.example .env.local
 # Add your configuration
 ```
 
-3. Launch
+4. Launch
 
 ```bash
 bun run dev
