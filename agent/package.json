@@ -12,17 +12,16 @@
 	"dependencies": {
 		"@coinbase/cdp-agentkit-core": "latest",
 		"@coinbase/cdp-langchain": "latest",
-		"@langchain/core": "latest",
-		"@langchain/langgraph": "latest",
-		"@langchain/openai": "latest",
-		"twitter-api-v2": "^1.16.0",
-		"dotenv": "latest",
+		"@langchain/core": "0.3.21",
+		"@langchain/langgraph": "^0.2.22",
+		"@langchain/openai": "^0.3.14",
+		"dotenv": "^16.4.5",
 		"express": "latest",
 		"cors": "latest"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.4.1",
-		"@types/node": "^20.10.4",
-		"typescript": "^5.3.3"
+		"@biomejs/biome": "^1.9.4",
+		"@types/node": "^22.10.2",
+		"typescript": "^5.7.2"
 	}
 }

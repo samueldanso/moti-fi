@@ -1,28 +1,28 @@
-import { CdpAgentkit } from "@coinbase/cdp-agentkit-core";
-import { CdpToolkit } from "@coinbase/cdp-langchain";
-import { createReactAgent } from "@langchain/langgraph/prebuilt";
-import { MemorySaver } from "@langchain/langgraph";
-import { ChatOpenAI } from "@langchain/openai";
+import { CdpAgentkit } from '@coinbase/cdp-agentkit-core'
+import { CdpToolkit } from '@coinbase/cdp-langchain'
+import { ReActAgent } from '@langchain/core/agents'
+import { MemorySaver } from '@langchain/langgraph'
+import { ChatOpenAI } from '@langchain/openai'
 
 export async function createInvestmentPlannerAgent() {
 	const llm = new ChatOpenAI({
-		modelName: "llama",
-		apiKey: "gaia",
+		modelName: 'llama',
+		apiKey: 'gaia',
 		configuration: {
-			baseURL: "https://llamatool.us.gaianet.network/v1",
+			baseURL: 'https://llamatool.us.gaianet.network/v1',
 		},
-	});
+	})
 
-	const memory = new MemorySaver();
-	const agentkit = await CdpAgentkit.configureWithWallet();
-	const cdpToolkit = new CdpToolkit(agentkit);
-	const tools = cdpToolkit.getTools();
+	const memory = new MemorySaver()
+	const agentkit = await CdpAgentkit.configureWithWallet()
+	const cdpToolkit = new CdpToolkit(agentkit)
+	const tools = cdpToolkit.getTools()
 
-	const agent = createReactAgent({
+	const agent = ReActAgent.fromLLMAndTools({
 		llm,
 		tools,
-		checkpointSaver: memory,
-		messageModifier: `
+		memory,
+		systemMessage: `
       You are an investment planning agent specialized in crypto markets.
 
       Your responsibilities:
@@ -33,14 +33,14 @@ export async function createInvestmentPlannerAgent() {
 
       Always explain your analysis and reasoning.
     `,
-	});
+	})
 
 	return {
 		agent,
 		config: {
 			configurable: {
-				thread_id: "moti-fi-planner-agent",
+				thread_id: 'moti-fi-planner-agent',
 			},
 		},
-	};
+	}
 }

@@ -1,8 +1,8 @@
-import { CdpAgentkit } from "@coinbase/cdp-agentkit-core"
-import { CdpToolkit } from "@coinbase/cdp-langchain"
-import { ChatOpenAI } from "@langchain/openai"
-import { createReactAgent } from "@langchain/langgraph/prebuilt"
-import { MemorySaver } from "@langchain/langgraph"
+import { CdpAgentkit } from "@coinbase/cdp-agentkit-core";
+import { CdpToolkit } from "@coinbase/cdp-langchain";
+import { ChatOpenAI } from "@langchain/openai";
+import { ReActAgent } from "@langchain/core/agents";
+import { MemorySaver } from "@langchain/langgraph";
 
 export async function initializeAgent() {
   const llm = new ChatOpenAI({
@@ -11,24 +11,24 @@ export async function initializeAgent() {
     configuration: {
       baseURL: "https://llamatool.us.gaianet.network/v1",
     },
-  })
+  });
 
   const config = {
     networkId: process.env.NEXT_PUBLIC_NETWORK_ID || "base-sepolia",
     enableTwitter: false,
-  }
+  };
 
-  const agentkit = await CdpAgentkit.configureWithWallet(config)
-  const cdpToolkit = new CdpToolkit(agentkit)
-  const tools = cdpToolkit.getTools()
+  const agentkit = await CdpAgentkit.configureWithWallet(config);
+  const cdpToolkit = new CdpToolkit(agentkit);
+  const tools = cdpToolkit.getTools();
 
-  const memory = new MemorySaver()
+  const memory = new MemorySaver();
 
-  const agent = createReactAgent({
+  const agent = ReActAgent.fromLLMAndTools({
     llm,
     tools,
-    checkpointSaver: memory,
-    messageModifier: `
+    memory,
+    systemMessage: `
       You are an AI investment management agent with multiple capabilities:
       1. Use 'get_social_sentiment' for asset sentiment
       2. Use 'get_wallet_details' for portfolio info
@@ -37,10 +37,10 @@ export async function initializeAgent() {
 
       IMPORTANT: Always use appropriate tools for each task.
     `,
-  })
+  });
 
   return {
     agent,
     config: { configurable: { thread_id: "moti-fi-agent" } },
-  }
+  };
 }

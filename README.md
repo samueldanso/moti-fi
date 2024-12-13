@@ -1,5 +1,4 @@
-<a href="https://emotisync.xyz">
-  <img alt="AI-Powered Investment Management Agents." src="app/(app)opengraph-image.png">
+<a>
   <h1 align="center">🤖 MotiFi: Your Autonomous AI Agents Investment Manager</h1>
 </a>
 

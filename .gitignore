@@ -39,7 +39,7 @@ next-env.d.ts
 # prompts
 /prompts
 
-# docs
+docs
 /docs
 docs/
 docs/*
