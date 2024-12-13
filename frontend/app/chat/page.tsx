@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { Chat } from "@/components/chat"
-import { PortfolioStatus } from "@/components/portfolio-status"
+import { Chat } from "@/components/chat";
+import { PortfolioStatus } from "@/components/portfolio-status";
 
 export default function ChatPage() {
   return (
@@ -18,5 +18,5 @@ export default function ChatPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
