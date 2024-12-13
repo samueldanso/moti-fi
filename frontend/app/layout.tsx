@@ -1,5 +1,5 @@
 import "@coinbase/onchainkit/styles.css"
-import "./styles/globals.css"
+import "@/styles/globals.css"
 import { Navbar } from "@/components/navbar"
 import { Plus_Jakarta_Sans } from "next/font/google"
 import { Providers } from "@/components/providers"
@@ -14,7 +14,9 @@ export const metadata = {
 
 export default function RootLayout({
   children,
-}: { children: React.ReactNode }) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${jakarta.className} bg background min-h-screen`}>
