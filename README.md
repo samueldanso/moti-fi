@@ -1,8 +1,26 @@
-# Moti-fi: Your AI Investment Team on Base
+<a href="https://emotisync.xyz">
+  <img alt="AI-Powered Investment Management Agents." src="app/(app)opengraph-image.png">
+  <h1 align="center">🤖 MotiFi — Your Autonomous AI Agents Investment Manager</h1>
+</a>
+AI-Powered Investment Management Agents
 
-Meet your personal team of AI agents that work together to manage your Web3 investments. Like having expert analysts, traders, and risk managers in your pocket - but powered by advanced AI and running 24/7 on Base.
+<p align="center">
+MotiFi is a team of specialized autonomous AI agents that work together to streamline the management of your Web3 investments. Like having expert analysts, traders, and portfolio managers in your pocket 24/7 to help you navigate the crypto market with confidence.
+Currently live on Base, powered by AgentKit and LangChain.
+</p>
 
-## 🤔 Why Moti-fi?
+ <p align="center">
+   <a href="#problem"><strong>Problem</strong></a> ·
+   <a href="#solution"><strong>Solution</strong></a> ·
+  <a href="#features"><strong>Features</strong></a> ·
+  <a href="#how-it-works"><strong>How it Works</strong></a> ·
+  <a href="#tech-stack"><strong>Tech Stack</strong></a> ·
+  <a href="#getting-started"><strong>Getting Started</strong></a> ·
+  <a href="#roadmap"><strong>Roadmap</strong></a>
+</p>
+<br/>
+
+## 🤔 Problem
 
 Managing crypto investments is challenging. Ever faced these issues?
 
@@ -12,13 +30,16 @@ Managing crypto investments is challenging. Ever faced these issues?
 -   Reacting quickly to market opportunities
 -   Making sense of complex market signals
 
-We built Moti-fi to solve these challenges with AI precision.
+## 🎯 Solution
 
-## ✨ Your Personal AI Investment Team
+We built Moti-fi to solve these challenges with AI precision.
+Our agents work collaboratively to provide real-time insights and automated trading capabilities, ensuring that you can make informed investment decisions quickly and efficiently.
+
+## ✨ Features
 
 Think of Moti-fi as your personal investment team:
 
-### 🧠 Social Sentiment Agent
+### 🤖 Social Sentiment Agent
 
 -   Tracks social signals and influencer activity
 -   Monitors market sentiment in real-time
@@ -41,6 +62,12 @@ Think of Moti-fi as your personal investment team:
 
 ## 🎯 How It Works
 
+Simply by natural language input
+
+1. Social Sentiment Agent: Scan social media and twiiter for real-time sentiment trends across crypto assets.
+2. Investment Planner Agent: Analyze sentiment data and market indicators to uncover investment opportunities.
+3. Portfolio Manager Agent: Automatically execute trades and manage portfolio risk with precision.
+
 ```mermaid
 graph TD
     A[You] --> B[Natural Language Input]
@@ -54,7 +81,7 @@ graph TD
     end
 ```
 
-## 🛠️ Technology Stack
+## 🛠️ Tech Stack
 
 Built with enterprise-grade partner technologies:
 
@@ -68,23 +95,32 @@ Built with enterprise-grade partner technologies:
 ### Backend
 
 -   **AI Engine**: Gaia LLM
--   **Blockchain**: Base Network
--   **Agent Framework**: CDP AgentKit
--   **Development Kit**: CDP SDK
--   **State Management**: Zustand
+-   **Blockchain**: Base Chain
+-   **Agent Framework**: Coibase Developer Platform AgentKit
+-   **Development Kit**: Coibase Developer Platform
+-   **Agent Orchestration**: Langchain
 -   **Type Safety**: TypeScript, Zod
+-   **Formatter & Linter:** Biome
+-   **Package Manager:** Bun
 
 ## 🚀 Getting Started
 
-1. Clone & Install
+1. Clone the repository
 
 ```bash
 git clone https://github.com/yourusername/moti-fi.git
-cd moti-fi
-bun install
 ```
 
-2. Set up your environment
+2. Install dependencies
+
+    ```bash
+    cd frontend
+    bun install
+    cd agent
+    bun install
+    ```
+
+3 Set up your environment
 
 ```bash
 cp .env.example .env.local
@@ -121,10 +157,6 @@ Your AI Team:
 3. Portfolio Manager executes with precision
 ```
 
-## 📄 License
+## Roadmap
 
-MIT
-
-## 🤝 Join Us
-
-Have ideas to make Moti-fi even better? We'd love to hear from you!
+-   [ ]
